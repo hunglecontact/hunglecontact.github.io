@@ -3,48 +3,177 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hero Labs Mobile & Developer Support</title>
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+  <title>Tran Hung - Mobile Solutions & Developer Support</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- AOS Animation Library CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <style>
-    /* Reset & Base */
+    /* Reset & CSS Variables */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Roboto', sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
-    a { color: #007bff; text-decoration: none; }
-    img { max-width: 100%; height: auto; display: block; }
+    :root {
+      --bg-dark: #0a0d14;
+      --bg-card: #131927;
+      --accent-color: #3b82f6;
+      --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border-color: rgba(255, 255, 255, 0.08);
+    }
 
-    /* Layout */
-    header, footer { background: #212529; color: #fff; }
-    header { padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
-    header .logo { display: flex; align-items: center; }
-    header .logo img { height: 40px; margin-right: 0.5rem; }
-    nav a { margin-left: 1rem; font-weight: 700; }
-    .container { max-width: 1000px; margin: auto; padding: 2rem 1rem; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.6;
+      color: var(--text-main);
+      background-color: var(--bg-dark);
+      overflow-x: hidden;
+    }
 
-    /* Hero */
-    .hero { background: #007bff; color: #fff; text-align: center; padding: 4rem 1rem; }
-    .hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-    .hero p { font-size: 1.1rem; }
+    a { color: var(--accent-color); text-decoration: none; transition: 0.3s; }
+    a:hover { opacity: 0.8; }
 
-    /* Sections */
-    section { margin-top: 3rem; }
-    .services, .support { display: flex; flex-wrap: wrap; gap: 2rem; }
-    .card { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); flex: 1; min-width: 250px; padding: 2rem; }
-    .card h3 { margin-bottom: 1rem; }
-    .card p { color: #555; }
+    /* Layout Container */
+    .container { max-width: 1100px; margin: auto; padding: 4rem 1.5rem; }
 
-    /* Contact Form */
-    .contact form { display: grid; gap: 1rem; margin-top: 1rem; }
-    .contact input, .contact textarea { width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px; }
-    .contact button { background: #28a745; color: #fff; border: none; padding: 0.8rem; font-size: 1rem; border-radius: 4px; cursor: pointer; }
-    .contact button:hover { background: #218838; }
+    /* Header */
+    header {
+      background: rgba(10, 13, 20, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header .logo { display: flex; align-items: center; gap: 0.75rem; }
+    
+    /* Biểu tượng Icon thay thế cho Logo hình ảnh */
+    header .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--accent-gradient);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+    
+    header .logo span { font-size: 1.25rem; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+
+    nav a { margin-left: 1.5rem; font-weight: 600; color: var(--text-muted); font-size: 0.95rem; }
+    nav a:hover { color: #fff; }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      padding: 7rem 1.5rem;
+      text-align: center;
+      background: radial-gradient(circle at 50% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      background: linear-gradient(180deg, #FFFFFF 0%, #A5B4FC 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: auto;
+    }
+
+    /* Cards Grid */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(59, 130, 246, 0.4);
+      box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3);
+    }
+
+    .card h3 { font-size: 1.25rem; margin-bottom: 0.75rem; color: #fff; }
+    .card p { color: var(--text-muted); font-size: 0.95rem; }
+
+    /* Section Titles */
+    section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-desc { color: var(--text-muted); margin-bottom: 1.5rem; }
+
+    /* Form Styles */
+    .contact form { display: grid; gap: 1.2rem; margin-top: 2rem; }
+    .contact input, .contact textarea {
+      width: 100%;
+      padding: 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: #fff;
+      font-family: inherit;
+      transition: 0.3s;
+    }
+    .contact input:focus, .contact textarea:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+
+    .contact button {
+      background: var(--accent-gradient);
+      color: #fff;
+      border: none;
+      padding: 1rem;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .contact button:hover { opacity: 0.9; transform: scale(0.99); }
 
     /* Footer */
-    footer { text-align: center; padding: 1.5rem 1rem; font-size: 0.9rem; }
+    footer {
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 4rem;
+    }
 
     /* Responsive */
     @media (max-width: 768px) {
-      header { flex-direction: column; text-align: center; }
-      nav { margin-top: 0.5rem; }
+      header { flex-direction: column; gap: 1rem; }
+      nav a { margin: 0 0.75rem; }
+      .hero h1 { font-size: 2.2rem; }
     }
   </style>
 </head>
@@ -53,8 +182,15 @@
   <!-- Header -->
   <header>
     <div class="logo">
-      <img src="https://raw.githubusercontent.com/theateam2023/files/refs/heads/develop/IMG_4827.PNG" alt="Hero Labs Mobile Logo">
-      <span><strong>HeroLabs Mobile</strong></span>
+      <!-- Biểu tượng Icon SVG thay thế cho Logo hình ảnh -->
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+          <polyline points="2 17 12 22 22 17"></polyline>
+          <polyline points="2 12 12 17 22 12"></polyline>
+        </svg>
+      </div>
+      <span>Tran Hung</span>
     </div>
     <nav>
       <a href="#about">About Us</a>
@@ -66,80 +202,92 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="container">
+    <div data-aos="fade-up" data-aos-duration="1000">
       <h1>Pioneering Top-Tier Mobile Solutions</h1>
-      <p>HeroLabs Mobile is your expert partner in crafting high-quality mobile apps. Our portfolio includes several top-ranked apps on the App Store.</p>
+      <p>Tran Hung is your expert partner in crafting high-quality mobile applications with top-ranked presence on the App Store.</p>
     </div>
   </section>
 
   <!-- About Us -->
-  <section id="about" class="container">
+  <section id="about" class="container" data-aos="fade-up">
     <h2>About Us</h2>
-    <p>HeroLabs Mobile is a leading technology company specializing in mobile application development. With over 10 years of experience and a dedicated team of experts, we deliver best-in-class solutions that delight users and drive business growth. Several of our apps have reached the top charts on the Apple App Store.</p>
+    <p class="section-desc">Tran Hung is a leading technology enterprise specializing in mobile application development. With over a decade of industry expertise, our team delivers high-performance solutions that drive engagement and top rankings on the Apple App Store.</p>
   </section>
 
   <!-- Services -->
-  <section id="services" class="container">
+  <section id="services" class="container" data-aos="fade-up">
     <h2>Our Services</h2>
-    <div class="services">
-      <div class="card">
+    <p class="section-desc">End-to-end development services tailored to modern mobile standards.</p>
+    <div class="grid">
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
         <h3>iOS App Development</h3>
-        <p>Custom native iOS applications built with Swift and SwiftUI, optimized for performance and user engagement.</p>
+        <p>Custom native iOS applications engineered with Swift and SwiftUI, optimized for performance and fluid UX.</p>
       </div>
-      <div class="card">
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
         <h3>Android App Development</h3>
-        <p>Premium native Android apps using Kotlin and Jetpack, delivering seamless experiences across devices.</p>
+        <p>Premium native Android applications utilizing Kotlin and Jetpack for seamless cross-device compatibility.</p>
       </div>
-      <div class="card">
+      <div class="card" data-aos="fade-up" data-aos-delay="300">
         <h3>UX/UI Design</h3>
-        <p>Intuitive and beautiful interface designs, backed by user research and industry best practices.</p>
+        <p>Intuitive interface design backed by user-centered research and modern design systems.</p>
       </div>
     </div>
   </section>
 
   <!-- Developer Support -->
-  <section id="support" class="container">
+  <section id="support" class="container" data-aos="fade-up">
     <h2>Developer Support</h2>
-    <p>Whatever issues you’re facing, our dedicated support team is here to resolve them. Contact us for prompt assistance:</p>
-    <div class="support">
-      <div class="card">
+    <p class="section-desc">Technical backing and issue resolution from our core engineering team.</p>
+    <div class="grid">
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
         <h3>Issue Resolution</h3>
-        <p>We diagnose and fix any technical problems or bugs in your mobile applications.</p>
+        <p>Diagnosing and patching technical defects and runtime anomalies across native setups.</p>
       </div>
-      <div class="card">
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
         <h3>Performance Optimization</h3>
-        <p>Help improving app speed, stability, and overall user experience.</p>
+        <p>Enhancing frame rates, memory footprints, and network communication efficiency.</p>
       </div>
-      <div class="card">
-        <h3>Feature Support</h3>
-        <p>Guidance on implementing and troubleshooting new features effectively.</p>
+      <div class="card" data-aos="fade-up" data-aos-delay="300">
+        <h3>Feature Integration</h3>
+        <p>Guidance on implementing complex APIs, SDKs, and platform-specific capabilities.</p>
       </div>
-      <div class="card">
-        <h3>Custom Solutions</h3>
-        <p>Tailored assistance for integrations, APIs, and platform-specific challenges.</p>
+      <div class="card" data-aos="fade-up" data-aos-delay="400">
+        <h3>Custom Architecture</h3>
+        <p>Tailored architecture design and infrastructure assistance for complex applications.</p>
       </div>
     </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="container contact">
+  <section id="contact" class="container contact" data-aos="fade-up">
     <h2>Contact Us</h2>
-    <p>If you’re facing any issues or need assistance, please reach out to us for prompt support:</p>
-    <form action="mailto:tvtechhelper@gmail.com" method="post" enctype="text/plain">
+    <p class="section-desc">Need assistance or have project inquiries? Send us a direct message below.</p>
+    
+    <form action="mailto:hle29071@gmail.com" method="post" enctype="text/plain">
       <input type="text" name="name" placeholder="Full Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Describe the issue you're encountering" required></textarea>
+      <textarea name="message" rows="5" placeholder="Describe your request or technical inquiry" required></textarea>
       <button type="submit">Send Message</button>
     </form>
-    <p style="margin-top:1rem; color:#555;">
-      Or email us directly at <a href="mailto:tvtechhelper@gmail.com">tvtechhelper@gmail.com</a>
+    
+    <p style="margin-top: 1.5rem; color: var(--text-muted);">
+      Or email directly: <a href="mailto:hle29071@gmail.com">hle29071@gmail.com</a>
     </p>
   </section>
 
   <!-- Footer -->
   <footer>
-    &copy; 2025 HeroLabs Mobile. All rights reserved.
+    &copy; 2026 Tran Hung. All rights reserved.
   </footer>
+
+  <!-- AOS Library JS for Scroll Animations -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+  </script>
 
 </body>
 </html>
